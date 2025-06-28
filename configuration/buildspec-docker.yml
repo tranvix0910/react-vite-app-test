@@ -1,0 +1,22 @@
+version: 0.2
+phases:
+  pre_build:
+    commands:
+      - echo Logging in to Amazon ECR...
+      - aws --version
+      - aws ecr get-login-password --region ap-southeast-1 | docker login --username AWS --password-stdin 022499043310.dkr.ecr.ap-southeast-1.amazonaws.com
+      - REPOSITORY_URI=022499043310.dkr.ecr.ap-southeast-1.amazonaws.com/workshop-2/react-vite-blog-app
+      - COMMIT_HASH=$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION | cut -c 1-7)
+
+  build:
+    commands:
+      - echo Build started on `date`
+      - echo Building the Docker image...
+      - docker build -t react-vite-blog-app:$COMMIT_HASH .
+      - docker tag react-vite-blog-app:$COMMIT_HASH $REPOSITORY_URI:$COMMIT_HASH
+
+  post_build:
+    commands:
+      - echo Pushing the Docker image...
+      - docker push $REPOSITORY_URI:$COMMIT_HASH
+      - echo Build completed on `date`
