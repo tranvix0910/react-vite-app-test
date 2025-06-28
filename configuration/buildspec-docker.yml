@@ -20,3 +20,9 @@ phases:
       - docker push $REPOSITORY_URI:latest
       - docker push $REPOSITORY_URI:$COMMIT_HASH
       - echo Build completed on `date`
+      - echo Writing image definitions file...
+      - printf '[{"name":"blog-app-container","imageUri":"%s"}]' $REPOSITORY_URI:$COMMIT_HASH > imagedefinitions.json
+      - cat imagedefinitions.json
+artifacts:
+  files:
+    - imagedefinitions.json
