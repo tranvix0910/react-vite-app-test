@@ -1,0 +1,26 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      nodejs: latest
+    commands:
+      - echo Installing dependencies
+      - npm install
+  pre_build:
+    commands:
+      - echo Nothing to do in the pre_build phase...
+  build:
+    commands:
+      - echo Build started on `date`
+      - npm run build
+      - echo Build completed on `date`
+  post_build:
+    commands:
+      - echo Post build phase
+      - echo Build completed on `date`
+artifacts:
+  files:
+    - 'dist/**'
+  discard-paths: yes
+
