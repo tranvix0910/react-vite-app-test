@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
+import { motion } from 'framer-motion'
 import { Calendar, User, ArrowRight, Search, TrendingUp, BookOpen, Users } from 'lucide-react'
 import { format } from 'date-fns'
 
