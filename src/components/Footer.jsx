@@ -5,10 +5,9 @@ const Footer = () => {
   const currentYear = new Date().getFullYear()
 
   const socialLinks = [
-    { name: 'GitHub', href: '#', icon: Github },
-    { name: 'Twitter', href: '#', icon: Twitter },
-    { name: 'LinkedIn', href: '#', icon: Linkedin },
-    { name: 'Email', href: 'mailto:hello@blog.com', icon: Mail },
+    { name: 'GitHub', href: 'https://github.com/tranvix0910', icon: Github },
+    { name: 'LinkedIn', href: 'https://www.linkedin.com/in/tranvix0910/', icon: Linkedin },
+    { name: 'Email', href: 'mailto:tranvix.work@gmail.com', icon: Mail },
   ]
 
   const footerLinks = [
